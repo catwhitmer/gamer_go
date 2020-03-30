@@ -3,7 +3,7 @@ class CreateGamesTable < ActiveRecord::Migration
     create_table :games do |t| 
       t.string :name 
       t.string :genre 
-      t.integer :user_id
+      t.text :user_id
     end
   end
 end
