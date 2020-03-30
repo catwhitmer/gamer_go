@@ -4,5 +4,6 @@ class CreateGamesTable < ActiveRecord::Migration
       t.string :name 
       t.string :genre 
       t.integer :user_id
+    end
   end
 end
