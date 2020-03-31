@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   end
   
   get '/users/:id' do 
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_id(id: params[:id])
     erb :"/users/home"
   end
   
