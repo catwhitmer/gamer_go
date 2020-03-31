@@ -20,4 +20,8 @@ class SessionsController < ApplicationController
     erb :show
   end
   
+  get '/signup' do 
+    erb :signup
+  end
+  
 end
