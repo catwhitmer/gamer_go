@@ -7,12 +7,17 @@ class SessionsController < ApplicationController
   post '/login' do 
     @user = User.find_by(email: params[:email], password_digest: params[:password])
     
-    if user && @user.authenticate(params[:password])
-      login[:user_id] = user.id 
-      
+    if  @user.authenticate(params[:password])
+      session[:user_id] = @user.id 
+      redirect "users/#{@user.id}"
     else
       redirect '/login'
     end
+  end
+  
+  get '/users/:id' do 
+    @user = User.find_by_id(params[:id])
+    erb :show
   end
   
 end
