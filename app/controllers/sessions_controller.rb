@@ -24,4 +24,9 @@ class SessionsController < ApplicationController
     erb :signup
   end
   
+  post '/users' do 
+    @user = User.find_by(email: params[:email], password_digest: params[:password])
+    erb :show
+  end
+  
 end
