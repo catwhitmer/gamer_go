@@ -4,4 +4,8 @@ class SessionsController < ApplicationController
     erb :login
   end
   
+  post '/login' do 
+    
+  end
+  
 end
