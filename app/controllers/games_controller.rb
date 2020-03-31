@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   
   get '/games/new' do 
-    erb :new
+    erb :'/games/new'
+  end
+  
+  post '/games' do 
+    
   end
 end
   

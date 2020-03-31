@@ -1,4 +1,11 @@
 <h2>--> Gamer Go <--</h2>
   <h2>Welcome <%= @user.name%>!</h2>
   
-  <p>What would you like to do today?</p>
+  <p>What would you like to do today?
+    <ul>
+      <li><a href="/games/new">Add a New Game to my collection</a></li>
+      <li><a href="/">See all my games</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+  </p>
+  
