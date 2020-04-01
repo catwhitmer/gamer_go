@@ -21,4 +21,9 @@ class GamesController < ApplicationController
       #show all games
     end
   end
+  
+  get '/games/:id/edit' do
+    @game = Recipe.find_by_id(params[:id])
+    erb :'/games/edit'
+  end
 end
