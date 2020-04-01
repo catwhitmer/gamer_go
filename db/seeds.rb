@@ -1,5 +1,5 @@
-cat = User.create(name: "Cat", email: "cat@gmail.com", password_digest: "abcd")
-tim = User.create(name: "Tim", email: "tim@gmail.com", password_digest: "qwerty")
+cat = User.create(name: "Cat", email: "cat@gmail.com", password: "abcd")
+tim = User.create(name: "Tim", email: "tim@gmail.com", password: "qwerty")
 
 Game.create(name: "Resident Evil", genre: "survival horror", user: cat)
 Game.create(name: "Grandia 2", genre: "RPG", user: tim)
