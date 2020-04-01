@@ -15,15 +15,11 @@ class GamesController < ApplicationController
   
   get '/games/:id' do 
     @game = Game.find_by_id(params[:id])
-    if @game
       erb :'/games/show'
-    else
-      #show all games
-    end
   end
   
   get '/games/:id/edit' do
-    @game = Recipe.find_by_id(params[:id])
-    erb :'/games/edit'
+    @game = Game.find_by_id(params[:id])
+      erb :'/games/edit'
   end
 end

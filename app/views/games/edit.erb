@@ -2,8 +2,9 @@
 
 <h3>Edit Game:</h3>
 
-<form action="/games" method="POST">
-  <p>Name: <input type="text" name="name"></p>
-  <p>genre: <input type="text" name="genre"></p>
+<form action="/games/<%= @game.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <p>Name: <input type="text" name="name" value="<%= @game.name %>"></p>
+  <p>genre: <input type="text" name="genre" value="<%= @game.genre %>"></p>
   <button type="submit" value="submit">Add game</button>
 </form>
