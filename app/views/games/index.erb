@@ -3,6 +3,10 @@
 
 <h1>My Games</h1>
 
-<% @game.each do |game| %>
-<a href="/games/<%= game.name %>"> <%= game.genre %> </a>
+<% @games.each do |game| %>
+<ul>
+<li> <%= game.name %> </li>
+<li> <%= game.genre %> </li>
+<br>
+</ul>
 <% end %> 
