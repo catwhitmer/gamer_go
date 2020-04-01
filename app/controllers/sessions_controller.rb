@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   
   post '/users' do 
    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
-   session[:user_id] = user.id
+   session[:user_id] = @user.id
    redirect "/users/#{@user.id}"
   end
   
