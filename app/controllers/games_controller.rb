@@ -30,4 +30,9 @@ class GamesController < ApplicationController
       redirect "/games/#{@game.id}"
     end
   end
+  
+  delete '/games/:id' do
+    Game.find(params[:id]).destroy
+    redirect '/games'
+  end
 end
