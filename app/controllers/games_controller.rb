@@ -24,11 +24,10 @@ class GamesController < ApplicationController
   end
   
   patch '/games/:id' do
-    Game.find(params[:id]).each do |game|
-      game.update(name: params[:name], genre: params[:genre])
+    @game = Game.find_by_id(params[:id])
+    @game.update(name: params[:name], genre: params[:genre])
 
       redirect "/games/#{@game.id}"
-    end
   end
   
   delete '/games/:id' do
