@@ -1,2 +1,8 @@
 <h2>--> Gamer Go <--</h2>
-All games
+
+
+<h1>My Games</h1>
+
+<% @game.each do |game| %>
+<a href="/games/<%= game.name %>"> <%= game.genre %> </a>
+<% end %> 

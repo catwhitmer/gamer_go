@@ -22,4 +22,12 @@ class GamesController < ApplicationController
     @game = Game.find_by_id(params[:id])
       erb :'/games/edit'
   end
+  
+  patch '/games/:id' do
+    Game.find(params[:id]).each do |game|
+      game.update(name: params[:name], genre: params[:genre])
+
+      redirect "/games/#{@game.id}"
+    end
+  end
 end
