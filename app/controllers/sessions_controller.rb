@@ -20,16 +20,18 @@ class SessionsController < ApplicationController
     erb :signup
   end
   
+  get '/users/:id' do 
+    @user = User.find_by_id(params[:id])
+    erb :"/users/home"
+  end
+  
+  
   post '/users' do 
    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
    session[:user_id] = @user.id
    redirect "/users/#{@user.id}"
   end
   
-  get '/users/:id' do 
-    @user = User.find_by_id(params[:id])
-    erb :"/users/home"
-  end
   
   get '/logout' do
     session.clear
