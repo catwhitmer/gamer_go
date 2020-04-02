@@ -19,13 +19,13 @@ class GamesController < ApplicationController
       @game = Game.create(name: params[:name], genre: params[:genre], user_id: current_user.id)
       redirect "/games/#{@game.id}"
     else
-      redirect :'games/new'
+      redirect :'/games/new'
     end
   end
   
   get '/games/:id/edit' do
-    @game = Game.find_by_id(params[:id])
-    if logged_in? && @game.user == current_user
+    if logged_in?
+      @game = Game.find_by_id(params[:id])
       erb :'/games/edit'
     else 
       redirect :'/login'
@@ -33,10 +33,11 @@ class GamesController < ApplicationController
   end
   
   patch '/games/:id' do
-    @game = Game.find_by_id(params[:id])
-    if logged_in? && @game.user == current_user && !params[:name].empty?
-      @game.update(name: params[:name], genre: params[:genre])
-
+    if logged_in?
+      @game = Game.find_by_id(params[:id])
+      @game.name = params[:name]
+      @game.genre = params[:genre]
+      @game.save
       redirect "/games/#{@game.id}"
     else 
       redirect :'/'
@@ -45,7 +46,7 @@ class GamesController < ApplicationController
   
   delete '/games/:id' do
     if current_user == @game.user
-      Game.find(params[:id]).destroy
+      Game.find_by_id(params[:id]).destroy
       redirect '/games'
     else 
       redirect '/games'
