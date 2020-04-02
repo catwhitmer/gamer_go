@@ -4,7 +4,7 @@
 <h1>My Games</h1>
 
 <% @games.each do |game| %>
-<h3><a href="/games/ <%= game.name %>"></a></h3>
-<h4> <%= game.genre %> </h4><br>
+  <%= game.name %>
+  <%= game.genre %> 
 <br>
 <% end %> 
