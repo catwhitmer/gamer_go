@@ -1,9 +1,10 @@
 <h2>--> Gamer Go <--</h2>
 
 
-<h1>My Games</h1>
-
+<h1>Game Library</h1>
+<br>
+<br>
 <% @games.each do |game| %>
- <h3><%= game.name %></h3>
+  <h3><a href="/games/"> <%= game.name %> </a></h3>
 <br>
 <% end %> 
