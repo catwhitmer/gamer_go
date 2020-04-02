@@ -1,12 +1,19 @@
 <h2>--> Gamer Go <--</h2>
 
-<h1>Name: <%=@game.name%></h1>
-<h2>Genre: <%=@game.genre%></h2>
+<h1>Name: <%= @game.name %> </h1>
 
-  <& if current_user == @game.user %>
-  <a href="/games/<&= @game.id %>/edit"> Edit Game</a>
-<form class="" action="/games/<%= @game.id%>" method="post">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" name="" value="Delete Game">
-</form>
-<% end &>
+<h2>Genre: <%= @game.genre %> </h2>
+
+  <% if @game.user == current_user %>
+    <a href="/games/<&= @game.id %>/edit"> Edit Game</a>
+    <a href="/games/<&= @game.id %>/delete"> Delete Game</a>
+  <% end %>
+  
+<h3>Back to
+  <a href="/">Home Page</a>
+</h3>
+
+<h3>Back to
+  <a href="/games">All Games</a>
+</h3>
+  
