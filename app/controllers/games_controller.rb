@@ -9,6 +9,11 @@ class GamesController < ApplicationController
     erb :'/games/new'
   end
   
+  get '/games/:id' do 
+    @game = Game.find_by_id(params[:id])
+      erb :'/games/show'
+  end
+  
   post '/games' do 
     if logged_in?
       @game = Game.create(name: params[:name], genre: params[:genre], user_id: current_user.id)
@@ -16,11 +21,6 @@ class GamesController < ApplicationController
     else
       redirect :'games/new'
     end
-  end
-  
-  get '/games/:id' do 
-    @game = Game.find_by_id(params[:id])
-      erb :'/games/show'
   end
   
   get '/games/:id/edit' do
