@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
   
   post '/users' do 
-   @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+   @user = User.new(name: params[:name], email: params[:email], password: params[:password])
    if user.save
       session[:user_id] = @user.id
 
