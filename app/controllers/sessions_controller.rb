@@ -1,7 +1,32 @@
 class SessionsController < ApplicationController
   
+  get '/signup' do 
+    erb :signup
+  end
+  
   get '/login' do
     erb :login
+  end
+  
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
+  
+  get '/users/:id' do 
+    @user = User.find_by_id(params[:id])
+    erb :"/users/home"
+  end
+  
+  post '/users' do 
+   @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+   if user.save
+      session[:user_id] = @user.id
+
+      redirect to "/users/#{@user.id}"
+    else
+      redirect to '/signup'
+    end
   end
   
   post '/login' do 
@@ -15,27 +40,4 @@ class SessionsController < ApplicationController
       redirect '/login'
     end
   end
-  
-  get '/signup' do 
-    erb :signup
-  end
-  
-  get '/users/:id' do 
-    @user = User.find_by_id(params[:id])
-    erb :"/users/home"
-  end
-  
-  
-  post '/users' do 
-   @user = User.create(name: params[:name], email: params[:email], password: params[:password])
-   session[:user_id] = @user.id
-   redirect "/users/#{@user.id}"
-  end
-  
-  
-  get '/logout' do
-    session.clear
-    redirect '/'
-  end
-  
 end
