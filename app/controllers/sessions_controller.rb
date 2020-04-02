@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     erb :"/users/home"
   end
   
- get '/logout' do
+  get '/logout' do
     session.clear
     redirect '/'
   end

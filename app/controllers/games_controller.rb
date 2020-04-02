@@ -34,7 +34,7 @@ class GamesController < ApplicationController
   
   patch '/games/:id' do
     @game = Game.find_by_id(params[:id])
-    if logged_in? && @game.user == current_user
+    if logged_in? && @game.user == current_user && !params[:name].empty?
       @game.update(name: params[:name], genre: params[:genre])
 
       redirect "/games/#{@game.id}"
