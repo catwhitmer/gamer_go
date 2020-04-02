@@ -3,5 +3,7 @@
 <h1>Name: <%=@game.name%></h1>
 <h2>Genre: <%=@game.genre%></h2>
 
+<& if current_user == @game.user %>
 <a href="/games/<&= @game.id %>/edit"> Edit Game</a>
 <a href="/games/<&= @game.id %>/delete">Delete Game</a>
+<% end &>

@@ -44,7 +44,11 @@ class GamesController < ApplicationController
   end
   
   delete '/games/:id' do
-    Game.find(params[:id]).destroy
-    redirect '/games'
+    if current_user == @game.user
+      Game.find(params[:id]).destroy
+      redirect '/games'
+    else 
+      redirect '/games'
+    end
   end
 end
