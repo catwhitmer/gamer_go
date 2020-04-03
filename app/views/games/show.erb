@@ -6,7 +6,13 @@
 
   <% if current_user == @game.user %>
     <a href="/games/<%= @game.id %>/edit"> Edit Game</a>
-    <a href="/games/<%= @game.id %>/delete"> Delete Game</a>
+    
+    <form method="post" action="/games/<%=@game.id%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <a href="/games/<%= @game.id %>delete"> Delete Game</a>
+    </form>
+    
+
   <% end %>
   
   <br>
@@ -19,4 +25,6 @@
 <h3>Back to
   <a href="/games">All Games</a>
 </h3>
+
+
   
