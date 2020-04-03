@@ -16,7 +16,7 @@ class GamesController < ApplicationController
   
   post '/games' do 
     if logged_in?
-      @game = Game.create(name: params[:name], genre: params[:genre], user_id: current_user.id)
+      @game = Game.create(name: params[:name], genre: params[:genre], notes: params[:notes], user_id: current_user.id)
       redirect "/games/#{@game.id}"
     else
       redirect :'/games/new'
@@ -37,6 +37,7 @@ class GamesController < ApplicationController
       @game = Game.find_by_id(params[:id])
       @game.name = params[:name]
       @game.genre = params[:genre]
+      @game.notes = params[:notes]
       @game.save
       redirect "/games/#{@game.id}"
     else 

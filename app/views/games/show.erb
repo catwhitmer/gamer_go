@@ -4,8 +4,11 @@
 
 <h2>Genre: <%= @game.genre %> </h2>
 
+<h2>Notes: <%= @game.notes %> </h2>
+
   <% if current_user == @game.user %>
-    <a href="/games/<%= @game.id %>/edit"><button> Edit Game </button></a>
+    <a href="/games/<%=@game.id%>/edit"><button> Edit Game </button></a>
+
 
     
     <form method="post" action="/games/<%=@game.id%>">
