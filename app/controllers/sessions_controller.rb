@@ -8,11 +8,6 @@ class SessionsController < ApplicationController
     erb :login
   end
   
-  get '/logout' do
-    session.clear
-    redirect '/'
-  end
-  
   get '/users/:id' do 
     @user = User.find_by_id(params[:id])
     erb :"/users/home"
@@ -39,4 +34,10 @@ class SessionsController < ApplicationController
       redirect '/login'
     end
   end
+  
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
+  
 end
