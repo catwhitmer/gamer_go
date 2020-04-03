@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   
   post '/users' do 
    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
-   if user.save
+   if @user.save
       session[:user_id] = @user.id
 
       redirect to "/users/#{@user.id}"
