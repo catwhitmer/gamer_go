@@ -6,7 +6,7 @@
 
 <h2>Notes: <%= @game.notes %> </h2>
 
-  <% if current_user %>
+  <% if current_user == @game.user %>
     <a href="/games/<%=@game.id%>/edit"><button> Edit Game </button></a>
 
 
