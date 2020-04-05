@@ -5,14 +5,16 @@
 <h2>Genre: <%= @game.genre %> </h2>
 
 <h2>Notes: <%= @game.notes %> </h2>
+<br>
 
-  <% if current_user == @game.user %>
-    <a href="/games/<%=@game.id%>/edit"><button> Edit Game </button></a>
-    
-    <form method="post" action="/games/<%=@game.id%>">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Game">
-    </form>
+
+<% if current_user == @game.user %>
+  <a href="/games/<%=@game.id%>/edit"><button> Edit Game </button></a>
+  <br>
+  <form method="post" action="/games/<%=@game.id%>">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Game">
+  </form>
  
-  <% end %>
+<% end %>
   
