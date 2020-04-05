@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   end
   
   post '/games' do 
-    @game = Game.create(name: params[:name], genre: params[:genre], notes: params[:notes])
+    @game = Game.create(name: params[:name], genre: params[:genre], notes: params[:notes], user_id: current_user.id)
     redirect "/games/#{@game.id}"
   end
   
