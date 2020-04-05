@@ -2,11 +2,11 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
-  configure do
+ configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sesions
-    set :sesion_secret, "game_secret"
+    enable :sessions
+    set :session_secret, "game_secret"
   end
 
   get "/" do
