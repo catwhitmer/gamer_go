@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sesions
-    set :sesion_secret, "secret"
+    set :sesion_secret, "game_secret"
   end
 
   get "/" do
@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     end
   
     def current_user
-      @user ||= User.find_by_id(session[:user_id])
+      @user ||= User.find_by_id(session[:user_id]) if logged_in?
     end
   end
 end
