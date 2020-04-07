@@ -29,11 +29,9 @@ class GamesController < ApplicationController
   end
   
   patch '/games/:id' do
-      @game = Game.find_by_id(params[:id])
-      @game.name = params[:name]
-      @game.genre = params[:genre]
-      @game.notes = params[:notes]
-      @game.save
+      @game = Game.find(params[:id])
+      @game.update(name: params[:name], genre: params[:genre], notes: params[:notes])
+      
       redirect "/games/#{@game.id}"
   end
   
