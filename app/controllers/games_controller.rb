@@ -29,10 +29,14 @@ class GamesController < ApplicationController
   end
   
   patch '/games/:id' do
-      @game = Game.find(params[:id])
-      @game.update(name: params[:name], genre: params[:genre], notes: params[:notes])
+    @game = Game.find(params[:id])
+      if logged_in? && !params[:name].empty?
+        @game.update(name: params[:name], genre: params[:genre], notes: params[:notes])
       
-      redirect "/games/#{@game.id}"
+        redirect "/games/#{@game.id}"
+      else 
+        redirect :'/'
+    end
   end
   
   delete '/games/:id' do
