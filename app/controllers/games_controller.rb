@@ -15,13 +15,17 @@ class GamesController < ApplicationController
   end
   
   post '/games' do 
-    @game = Game.create(name: params[:name], genre: params[:genre], notes: params[:notes], user_id: current_user.id)
-    redirect "/games/#{@game.id}"
+    if logged_in?
+      @game = Game.create(name: params[:name], genre: params[:genre], notes: params[:notes], user_id: current_user.id)
+      redirect "/games/#{@game.id}"
+    else
+      redirect :'games/new'
+    end
   end
   
   get '/games/:id/edit' do
     @game = Game.find_by_id(params[:id])
-      if @game
+      if logged_in?
         erb :'/games/edit'
       else 
         redirect :'/login'
