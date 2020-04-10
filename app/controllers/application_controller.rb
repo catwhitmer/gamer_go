@@ -24,8 +24,8 @@ class ApplicationController < Sinatra::Base
       @user ||= User.find_by_id(session[:user_id]) if logged_in?
     end
     
-    def authorized?
-      current_user == @game.user if logged_in?
+    def authorized?(t)
+      logged_in? && t.user == current_user
     end
   end
 end
